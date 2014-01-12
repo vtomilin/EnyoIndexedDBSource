@@ -31,6 +31,10 @@
   successfully opened, then the event will contain a 'db' property, which holds
   the IDBDatabase object.
 
+
+  &copy; Vitaly Tomilin
+  _Licensed under LGPL v3_
+  
  */
 enyo.kind({
     name: 'indexeddb.Source',

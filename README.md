@@ -1,17 +1,17 @@
 Installation
 ------------
-_indexeddb.Source_ is installed into your project's lib directory, much like
-any other Enyo plugin, for example _layout_ or _onyx_. [See this post in Enyo Wiki for details](https://github.com/enyojs/enyo/wiki/Managing-Your-Project).
+`indexeddb.Source` is installed into your project's lib directory, much like
+any other Enyo plugin, for example `layout` or `onyx`. [See this post in Enyo Wiki for details](https://github.com/enyojs/enyo/wiki/Managing-Your-Project).
 
-Generally, you want to add _indexeddb.Source_ plugin as a git submodule of your
-project, placed under _lib/indexeddb_ directory.
+Generally, you want to add `indexeddb.Source` plugin as a git submodule of your
+project, placed under `lib/indexeddb` directory.
 
 One way to do that is to run the following at your project's root directory:
 
     git submodule add https://github.com/vtomilin/EnyoIndexedDBSource.git lib/indexeddb
 
 
-Then you should add _indexeddb.Source_ dependency to your top-level _package.js_
+Then you should add `indexeddb.Source` dependency to your top-level `package.js`
 file:
 
 ```javascript
@@ -25,7 +25,7 @@ enyo.depends(
 
 Usage
 ------
-Create an instance of _indexeddb.Source_ sometime during your Applicaiton
+Create an instance of `indexeddb.Source` sometime during your Applicaiton
 startup and introduce it to enyo.store:
 
 ```javascript
@@ -51,9 +51,9 @@ create: enyo.inherit(function(sup) {
 })
 ```
   
-A global signal event, 'onIDBOpened' will be fired when database is initialized
+A global signal event, `onIDBOpened` will be fired when database is initialized
 and ready for use, or if its initialization failed, in which case the event
-will have 'error' property set to a particular error. If database has been
+will have `error` property set to a particular error. If database has been
 successfully opened, then the event will contain a 'db' property, which holds
 the IDBDatabase object.
 
@@ -80,7 +80,7 @@ onIDBReady: function(sender, event) {
 }
 ```
     
-In the above example `this.$.users` is _enyo.Collection_ object, configured in
+In the above example `this.$.users` is `enyo.Collection` object, configured in
 the sample application:
 
 ```javascript
@@ -98,7 +98,7 @@ components: [
 ```
 
 Further, you simply use data management methods(fetch, commit, destroy),
-provided by Enyo's data framework.
+provided by Enyo's data framework(`enyo.Collection`, `enyo.Model`).
 
 
-Also see _samples_ directory for examples.
+Also see `samples` directory for examples.
