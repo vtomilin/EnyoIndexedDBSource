@@ -1,13 +1,36 @@
 /**
   Implements enyo.Source with underlying IndexedDB.
 
-  A global signal event, 'onIDBOpened' is fired when database is initialized
+  Create an instance of indexeddb.Source sometime during your Applicaiton
+  startup and introduce it to enyo.store:
+  
+    create: enyo.inherit(function(sup) {
+        return function() {
+            var idbSource;
+            sup.apply(this, arguments);
+
+            try {
+                idbSource = new indexeddb.Source({
+                    dbName: 'users',
+                    dbVersion: 1,
+                    dbInitSchema: this.initSchema.bind(this)
+                });
+
+                enyo.store.addSources({
+                    'idb': idbSource
+                });
+            } catch(error) {
+                this.error('Failed to initialize IDB:', error);
+            }
+        };
+    })
+  
+  A global signal event, 'onIDBOpened' will be fired when database is initialized
   and ready for use, or if its initialization failed, in which case the event
   will have 'error' property set to a particular error. If database has been
   successfully opened, then the event will contain a 'db' property, which holds
   the IDBDatabase object.
 
-  ***TODO: elaborate, provide examples***
  */
 enyo.kind({
     name: 'indexeddb.Source',

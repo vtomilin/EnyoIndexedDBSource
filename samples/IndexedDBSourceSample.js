@@ -54,8 +54,7 @@ enyo.kind({
         });
 
 
-
-        return false;
+        return true;
     },
     initSchema: function(error, db, oldVer, newVer) {
         if (error) {
