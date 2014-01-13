@@ -97,8 +97,46 @@ components: [
 ]
 ```
 
-Further, you simply use data management methods(fetch, commit, destroy),
+Further, you simply use data management methods(`fetch`, `commit`, `destroy`),
 provided by Enyo's data framework(`enyo.Collection`, `enyo.Model`).
+
+Whereas `commit` and `destroy` generally do not require additional options,
+`fetch` frequently does. These are options, which control its behavior:
+
++ _opts.params.index_ is an optional index name to use in the object store.
+If not specified, a default key(primary) will be used.
++ _opts.params.key_  is an optional key or key range. If the key is a simple value
+then it is used directly to locate records, which match it. The key range
+is defined by an object, which should define appropriate properties:
+     * _lower_ key's lower bound value. If not defined, then the key
+       range is unbound from the lower end.
+     * _upper_ key's upper bound value. If not defined, then the key
+       range is unbound from the upper end.
+     __NOTE__ at least one, `lower` or `upper` property must be given.
+     * _lowerOpen_ optional boolean indicating whether records, which
+     match _lower_ key should be excluded from the result set.
+     * _upperOpen_ optional boolean indicating whether records, which
+     match _upper_ key should be excluded from the result set.
++ _opts.params.singleItem_ optional boolean(defaults to false), specifying
+  whether a single record is requested. This could be useful for efficiency
+  reasons, when pulling out an object by its primary key. If this option
+  is given, other options are ignored except `key` and `index`.
++ _opts.params.direction_ optional direction string of dataset traversal,
+  which will determine the order, which records will be returned at.
+  Possible values are:
+     * _next_ this is the default
+     * _prev_ the dataset will be traversed in reverse
+     * _nextunique_
+     * _prevunique_
++ _opts.params.offset_   optional offset in result set to return values
+                         from.
++ _opts.params.limit_    optional number of records to return.
+
+__NOTE__ that rec.url(which is your `Collection` or `Model` `url` property)
+will be used to infer underlying object store to operate on.
 
 
 Also see `samples` directory for examples.
+
+&copy; Vitaly Tomilin
+*Licensed under LGPL v3*
