@@ -139,4 +139,5 @@ will be used to infer underlying object store to operate on.
 Also see `samples` directory for examples.
 
 &copy; Vitaly Tomilin
+
 *Licensed under LGPL v3*
